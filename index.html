@@ -3,205 +3,280 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rada Market🛒</title>
+    <title>Rada Market — Shop</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f0f0f;
-            color: white;
+            font-family: "Poppins", sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+        }
+        /* TOP BAR */
+        .top-bar {
+            width: 100%;
+            background: linear-gradient(90deg, #5b2cff, #8c1eff);
+            padding: 12px 0;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(130, 0, 255, 0.4);
         }
         header {
-            background: #111;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            border-bottom: 2px solid #333;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            background: #181818;
-            padding: 15px;
-            border-bottom: 2px solid #333;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        nav a:hover {
-            color: #00aaff;
+            font-size: 34px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #1b1144, #29115c);
+            border-bottom: 2px solid #3c2a77;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 20px rgba(100, 0, 255, 0.3);
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: auto;
-            padding: 20px;
+            padding: 30px;
         }
-        h2 {
-            border-bottom: 2px solid #444;
-            padding-bottom: 5px;
+
+        /* CATEGORY BLOCK */
+        .category {
+            margin-bottom: 50px;
+            padding: 25px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #1a1440, #24175a);
+            box-shadow: 0 0 25px rgba(100, 0, 255, 0.25);
         }
+        .category-title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* PRODUCT GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* PRODUCT CARD */
         .item {
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            border: 1px solid #333;
+            background: #120f2b;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #3b2d7a;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
         }
-        .item span {
-            display: block;
-            margin: 3px 0;
+        .item:hover {
+            transform: translateY(-5px);
+            border-color: #7f5cff;
+            box-shadow: 0 0 20px rgba(130, 60, 255, 0.4);
         }
-        .warning {
-            background: #3a0000;
+        .item-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .item-price {
+            color: #b38cff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* DESCRIPTION POPUP */
+        .desc {
+            display: none;
+            margin-top: 12px;
             padding: 10px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border: 1px solid #550000;
+            border-radius: 12px;
+            background: #1a1740;
+            border: 1px solid #4a3d99;
+            animation: fade 0.3s ease-in-out;
+        }
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* WARNING */
+        .warning {
+            margin-top: 20px;
+            padding: 15px;
+            background: #250018;
+            border: 1px solid #620040;
+            border-radius: 12px;
+            text-align: center;
         }
     </style>
+    <script>
+        function toggleDesc(id) {
+            const box = document.getElementById(id);
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+    </script>
 </head>
 <body>
 
-<header>Vítej u Rada Market!🛒 — Platby přes Discord Objednávku!</header>
-
-<nav>
-    <a href="#ps99">Pet Simulator 99</a>
-    <a href="#grow">Grow a Garden</a>
-    <a href="#steal">Steal a Brainrot</a>
-</nav>
+<div class="top-bar">🔥 Extrém Sleva na Titaniky & Gems + STEAL A BRAINROT TÉŽ 🔥</div>
+<header>Rada Market — Platby pouze přes Discord</header>
 
 <div class="container">
-
-    <!-- PET SIMULATOR 99 -->
-    <section id="ps99">
-        <h2>🐾 PET SIMULATOR 99 — SKLAD</h2>
-
-        <div class="item">
-            <span><strong>Huge Peti</strong></span>
-            <span>Sklad: 80+ kusů</span>
-            <span>Cena: 10 Kč / ks</span>
+    <!-- CATEGORY: PS99 -->
+    <div class="category">
+        <div class="category-title">🐾 Pet Simulator 99</div>
+        <div class="grid">
+            <div class="item" onclick="toggleDesc('huge')">
+                <div class="item-name">Huge Pet</div>
+                <div class="item-price">10 Kč</div>
+                <div id="huge" class="desc">Sklad: 80+<br>Platba přes Discord.</div>
+            </div>
+            <div class="item" onclick="toggleDesc('gems')">
+                <div class="item-name">1B Gems</div>
+                <div class="item-price">45 Kč</div>
+                <div id="gems" class="desc">Sklad: 40B+<br>Bezpečný trade.</div>
+            </div>
+            <div class="item" onclick="toggleDesc('titan')">
+                <div class="item-name">Titanic</div>
+                <div class="item-price">200 Kč</div>
+                <div id="titan" class="desc">Sklad: 5+<br>Rychlé dodání.</div>
+            </div>
+            <div class="item" onclick="toggleDesc('hoverboard')">
+                <div class="item-name">Hoverboardy</div>
+                <div class="item-price">5–20 Kč</div>
+                <div id="hoverboard" class="desc">Sklad: 15+<br>Dle rarity.</div>
+            </div>
+            <div class="item" onclick="toggleDesc('stanky')">
+                <div class="item-name">Stánky</div>
+                <div class="item-price">5–20 Kč</div>
+                <div id="stanky" class="desc">Sklad: 15+<br>Dle rarity.</div>
+            </div>
+            <div class="item" onclick="toggleDesc('brainrot')">
+                <div class="item-name">Brainrot Vajíčko</div>
+                <div class="item-price">15 Kč</div>
+                <div id="brainrot" class="desc">Sklad: 20+<br>Platba přes Discord.</div>
+            </div>
         </div>
+        <div class="warning">⚠️ Bez refundací.</div>
+    </div>
 
-        <div class="item">
-            <span><strong>Hoverboardy</strong></span>
-            <span>Sklad: 15+</span>
-            <span>Cena: 5–20 Kč (dle rarity)</span>
+    <!-- CATEGORY: GROW A GARDEN -->
+    <div class="category">
+        <div class="category-title">🌿 Grow a Garden</div>
+        <div class="grid">
+            <div class="item" onclick="toggleDesc('dragon')">
+                <div class="item-name">DragonFly</div>
+                <div class="item-price">60 Kč</div>
+                <div id="dragon" class="desc">Sklad: 20+</div>
+            </div>
+            <div class="item" onclick="toggleDesc('trex')">
+                <div class="item-name">T‑Rex</div>
+                <div class="item-price">50 Kč</div>
+                <div id="trex" class="desc">Sklad: 15+</div>
+            </div>
+            <div class="item" onclick="toggleDesc('queenbee')">
+                <div class="item-name">Queen Bee</div>
+                <div class="item-price">50 Kč</div>
+                <div id="queenbee" class="desc">Sklad: 25+</div>
+            </div>
+            <div class="item" onclick="toggleDesc('mimic')">
+                <div class="item-name">Mimic Octopus</div>
+                <div class="item-price">50 Kč</div>
+                <div id="mimic" class="desc">Sklad: 10+</div>
+            </div>
         </div>
+        <div class="warning">⚠️ Bez refundací.</div>
+    </div>
 
-        <div class="item">
-            <span><strong>Gemy</strong></span>
-            <span>Sklad: 40B+</span>
-            <span>Cena: 60 Kč / 1B</span>
+    <!-- CATEGORY: STEAL & BRAINROT -->
+    <div class="category">
+        <div class="category-title">🧠 Steal & Brainrot</div>
+        <div class="grid">
+            <div class="item" onclick="toggleDesc('losb')">
+                <div class="item-name">Los Bros</div>
+                <div class="item-price">❌</div>
+                <div id="losb" class="desc">Očekávané naskladnění: ???</div>
+            </div>
+            <div class="item" onclick="toggleDesc('secretc')">
+                <div class="item-name">La Secret Combi</div>
+                <div class="item-price">350 Kč</div>
+                <div id="secretc" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('garama212')">
+                <div class="item-name">Garama And Madungung 212.5m/s</div>
+                <div class="item-price">❌</div>
+                <div id="garama212" class="desc">Očekávané naskladnění: ???</div>
+            </div>
+            <div class="item" onclick="toggleDesc('garama2')">
+                <div class="item-name">Garama Adn Madungdung</div>
+                <div class="item-price">❌</div>
+                <div id="garama2" class="desc">Očekávané naskladnění: ???</div>
+            </div>
+            <div class="item" onclick="toggleDesc('spag2')">
+                <div class="item-name">Spaghetti Tualetti</div>
+                <div class="item-price">200 Kč</div>
+                <div id="spag2" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('tictac')">
+                <div class="item-name">Tictac Sahur</div>
+                <div class="item-price">❌</div>
+                <div id="tictac" class="desc">Očekávané naskladnění: ???</div>
+            </div>
+            <div class="item" onclick="toggleDesc('taco')">
+                <div class="item-name">La Taco Combi</div>
+                <div class="item-price">150 Kč</div>
+                <div id="taco" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('taco148')">
+                <div class="item-name">Tacorita 148m/s</div>
+                <div class="item-price">200 Kč</div>
+                <div id="taco148" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('taco132')">
+                <div class="item-name">Tacorita 132m/s</div>
+                <div class="item-price">180 Kč</div>
+                <div id="taco132" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('spooky')">
+                <div class="item-name">La Spooky Grande 269m/s</div>
+                <div class="item-price">220 Kč</div>
+                <div id="spooky" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('combina')">
+                <div class="item-name">Los Combinasionas 105m/s</div>
+                <div class="item-price">115 Kč</div>
+                <div id="combina" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('chicle')">
+                <div class="item-name">Chicletera Rainbow 42m/s</div>
+                <div class="item-price">135 Kč</div>
+                <div id="chicle" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('rang')">
+                <div class="item-name">Rang Ring Bus 75m/s</div>
+                <div class="item-price">100 Kč</div>
+                <div id="rang" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('ying')">
+                <div class="item-name">Los Combi Ying Yang 112m/s</div>
+                <div class="item-price">120 Kč</div>
+                <div id="ying" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('orca')">
+                <div class="item-name">Orcaledon 300m/s</div>
+                <div class="item-price">270 Kč</div>
+                <div id="orca" class="desc">Sklad: 1</div>
+            </div>
+            <div class="item" onclick="toggleDesc('extinct')">
+                <div class="item-name">La Extinct Grande 35.2m/s</div>
+                <div class="item-price">❌</div>
+                <div id="extinct" class="desc">Očekávané naskladnění: ???</div>
+            </div>
         </div>
-
-        <div class="item">
-            <span><strong>Stánky</strong></span>
-            <span>Sklad: 15+</span>
-            <span>Cena: 5–20 Kč (dle rarity)</span>
-        </div>
-
-        <div class="item">
-            <span><strong>Brainrot Vajíčko</strong></span>
-            <span>Sklad: 20+</span>
-            <span>Cena: 15 Kč / ks</span>
-        </div>
-
-        <div class="item">
-            <span><strong>Titanic Pet</strong></span>
-            <span>Sklad: 5+</span>
-            <span>Cena: 250 Kč / ks</span>
-        </div>
-
-        <div class="item">
-            🎁 Bonus: Ke každé objednávce dostaneš speciálního peta s 10QA+ damage!
-        </div>
-
-        <div class="warning">
-            ⚠️ Peníze se nevrací. Zakoupené itemy nelze refundovat — objednávkou souhlasíte s tímto pravidlem.
-        </div>
-    </section>
-
-    <br><br>
-
-    <!-- GROW A GARDEN -->
-    <section id="grow">
-        <h2>🌿 GROW A GARDEN — SKLAD</h2>
-
-        <div class="item">
-            <strong>DragonFly</strong><br>
-            Sklad: 20+<br>
-            Cena: 60 Kč / ks
-        </div>
-
-        <div class="item">
-            <strong>T-Rex</strong><br>
-            Sklad: 15+<br>
-            Cena: 50 Kč / ks
-        </div>
-
-        <div class="item">
-            <strong>Queen Bee</strong><br>
-            Sklad: 25+<br>
-            Cena: 50 Kč / ks
-        </div>
-
-        <div class="item">
-            <strong>Mimic Octopus</strong><br>
-            Sklad: 10+<br>
-            Cena: 50 Kč / ks
-        </div>
-
-        <div class="item">🎁 Bonus: Nad 50 Kč = 1 Sextilion Zadarma!</div>
-
-        <div class="warning">⚠️ Peníze se nevrací. Zakoupené itemy nelze refundovat — objednávkou souhlasíte s tímto pravidlem.</div>
-    </section>
-
-    <br><br>
-
-    <!-- STEAL & BRAINROT -->
-    <section id="steal">
-        <h2>🧠 STEAL A BRAINROT — SKLAD</h2>
-
-        <div class="item"><strong>Los Bros</strong><br>Sklad: ❌<br>Očekávané naskladnění: ???</div>
-
-        <div class="item"><strong>La Secret Combi</strong><br>Sklad: 1<br>Cena: 650 Kč</div>
-
-        <div class="item"><strong>Garama And Madungung 212.5m/s</strong><br>Sklad: ❌<br>Očekávané naskladnění: ???</div>
-
-        <div class="item"><strong>Garama Adn Madungdung</strong><br>Sklad: ❌<br>Očekávané naskladnění: ???</div>
-
-        <div class="item"><strong>Spaghetti Tualetti</strong><br>Sklad: 1<br>Cena: 400 Kč</div>
-
-        <div class="item"><strong>Tictac Sahur</strong><br>Sklad: ❌<br>Očekávané naskladnění: ???</div>
-
-        <div class="item"><strong>La Taco Combi</strong><br>Sklad: 1<br>Cena: 350 Kč</div>
-
-        <div class="item"><strong>Tacorita 148m/s</strong><br>Sklad: 1<br>Cena: 400 Kč</div>
-
-        <div class="item"><strong>Tacorita 132m/s</strong><br>Sklad: 1<br>Cena: 380 Kč</div>
-
-        <div class="item"><strong>La Spooky Grande 269m/s</strong><br>Sklad: 1<br>Cena: 380 Kč</div>
-
-        <div class="item"><strong>Los Combinasionas 105m/s</strong><br>Sklad: 1<br>Cena: 240 Kč</div>
-
-        <div class="item"><strong>Chicletera Rainbow 42m/s</strong><br>Sklad: 1<br>Cena: 200 Kč</div>
-
-        <div class="item"><strong>Rang Ring Bus 75m/s</strong><br>Sklad: 1<br>Cena: 200 Kč</div>
-
-        <div class="item"><strong>Los Combi Ying Yang 112m/s</strong><br>Sklad: 1<br>Cena: 215 Kč</div>
-
-        <div class="item"><strong>Orcaledon 300m/s</strong><br>Sklad: 1<br>Cena: 350 Kč</div>
-
-        <div class="item"><strong>La Extinct Grande 35.2m/s</strong><br>Sklad: ❌<br>Očekávané naskladnění: ???</div>
-
-        <div class="item">✔️ Vše dostupné ihned</div>
-            <div class="warning">⚠️ Peníze se nevrací. Zakoupené itemy nelze refundovat — objednávkou souhlasíte s tímto pravidlem.</div>
-    </section>
-
+        <div class="warning">⚠️ Bez refundací.</div>
+    </div>
 </div>
 
 </body>
